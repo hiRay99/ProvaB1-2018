@@ -16,4 +16,4 @@ namespace SGA.ApplicationCore.Entity
 
     }
 }
-}
+
