@@ -21,5 +21,14 @@ namespace SGA.Infrastructure.Data
         public DbSet<Categoria>  Categorias { get; set; }
 
         public DbSet<Avaliacao> Avaliacoes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Participante>().ToTable("Tb_participante");
+            modelBuilder.Entity<Endereco>().ToTable("Tb_endereco");
+            modelBuilder.Entity<Trabalho>().ToTable("Tb_trabalho");
+            modelBuilder.Entity<Categoria>().ToTable("Tb_categoria");
+            modelBuilder.Entity<Avaliacao>().ToTable("Tb_avaliacao");
+        }
     }
 }

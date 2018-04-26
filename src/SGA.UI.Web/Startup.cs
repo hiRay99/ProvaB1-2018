@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SGA.UI.Web.Data;
 using SGA.UI.Web.Models;
 using SGA.UI.Web.Services;
+using SGA.Infrastructure.Data;
 
 namespace SGA.UI.Web
 {
@@ -32,6 +33,9 @@ namespace SGA.UI.Web
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddDbContext<AlunoContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
